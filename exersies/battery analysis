@@ -1,0 +1,49 @@
+import random
+# Import Python's random module to generate sample voltage values.
+
+NUM_READINGS = 50
+# Set the number of voltage readings to generate.
+# Set the total measurement duration in minutes.
+DURATION_MINUTES = 100
+
+# Take readings at evenly spaced times, including the start and end.
+# Build 50 evenly spaced measurement times from 0 through 100 minutes.
+# Dividing by NUM_READINGS - 1 makes the first and last readings endpoints.
+times = [i * DURATION_MINUTES / (NUM_READINGS - 1) for i in range(NUM_READINGS)]
+# Store each measurement's time and voltage together in a list.
+readings = [
+	(time, random.uniform(2.0, 5.0))
+	for time in times
+]
+voltages = [voltage for _, voltage in readings]
+
+average_voltage = sum(voltages) / NUM_READINGS
+# Compute the arithmetic mean voltage.
+average_voltage = sum(voltages) / NUM_READINGS
+# Find the smallest voltage in the list.
+minimum_voltage = min(voltages)
+# Find the largest voltage in the list.
+maximum_voltage = max(voltages)
+# Find readings below 3.5 V from the stored list.
+low_readings = [(time, voltage) for time, voltage in readings if voltage < 3.5]
+
+print(f"Average voltage: {average_voltage:.2f} V")
+# Display the average voltage rounded to two decimal places.
+print(f"Average voltage: {average_voltage:.2f} V")
+# Display the minimum voltage rounded to two decimal places.
+print(f"Minimum voltage: {minimum_voltage:.2f} V")
+# Display the maximum voltage rounded to two decimal places.
+print(f"Maximum voltage: {maximum_voltage:.2f} V")
+# Display the number of readings below the 3.5 V threshold.
+print(f"Readings below 3.5 V: {len(low_readings)}")
+# Check whether there are any readings below the threshold.
+if low_readings:
+	# Label the list of times and voltages that follows.
+	print("Times below 3.5 V:")
+	# Unpack each low reading into its time and voltage.
+	for time, voltage in low_readings:
+		# Print both values, rounded to two decimal places.
+		print(f"  {time:.2f} minutes: {voltage:.2f} V")
+# If the list is empty, report that no readings were below 3.5 V.
+else:
+	print("No readings were below 3.5 V.")
