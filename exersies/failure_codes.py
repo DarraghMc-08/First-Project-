@@ -1,11 +1,11 @@
-#errors
-errors = [404, 500, 404, 302, 500, 200, 404]
-unique_errors = set(errors)
-#print
-print("Total error events:", len(errors))
-print("Distinct error types:", len(unique_errors))
-print("Sorted unique codes:", sorted(unique_errors))
-#counting errors
-for code in sorted(unique_errors):
-	print(f"Code {code}: {errors.count(code)} occurrences")
+# failure-codes: labels this section of the program.
+run1 = [101, 102, 404, 500, 404, 101]  # Stores the failure codes from the first run.
+run2 = [102, 303, 404, 500, 500, 102]  # Stores the failure codes from the second run.
+
+unique_codes = set(run1 + run2)  # Combines both lists and removes duplicate codes.
+print("Total number of unique codes:", len(unique_codes))  # Displays how many different codes were found.
+print("Unique codes:", unique_codes)  # Displays the set of different codes.
+
+run1_counts = {code: run1.count(code) for code in set(run1)}  # Counts each distinct code in the first run.
+print("Run 1 distinct codes and counts:", run1_counts)  # Displays each Run 1 code and its count.
 
