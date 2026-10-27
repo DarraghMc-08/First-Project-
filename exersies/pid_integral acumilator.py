@@ -5,6 +5,6 @@ def add_to_total(x):
     total += x
     return total
 
-while total < 100:
+for x in range(100):  
     add_to_total(5)
     print(total)  
