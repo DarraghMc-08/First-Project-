@@ -10,7 +10,7 @@ pressure_kpa = rho * g * h / 1000  # bottom pressure in kPa
 
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 
-axes[0].plot(h, v, color="red")
+axes[0].plot(h, v, color="green")
 axes[0].set_xlabel("Depth (m)")
 axes[0].set_ylabel("Outlet velocity (m/s)")
 axes[0].set_title("Outlet Velocity vs Depth")
