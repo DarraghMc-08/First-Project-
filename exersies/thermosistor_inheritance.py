@@ -18,6 +18,6 @@ class Thermistor(Resistor):
     def temperature(self):
         return 1.0 / (self.A + self.B * math.log(self.r))
 
-therm = Thermistor(10000)
+therm = Thermistor(100000000)
 print(f"temperature: {therm.temperature():.2f} K")
-print(f"current for 5v: {therm.current(5):.5f} A")
+print(f"current for 5v: {therm.current(5):.10f} A")
