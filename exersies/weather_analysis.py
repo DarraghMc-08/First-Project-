@@ -28,5 +28,15 @@ with open("exersies/weather_data.csv") as infile:
 
 print(f"Loaded {len(data)} records.")
 
+specific_date = datetime.strptime(input("Enter date to filter (YYYY-MM-DD): "), "%Y-%m-%d").date()
+temps_for_date = {
+    r.temperature for r in data
+    if r.date_str.date() == specific_date
+}
+avg_temp = np.mean(list(temps_for_date)) if temps_for_date else None
+print(f"Temperatures on {specific_date}: {temps_for_date}")
+if avg_temp is not None:
+    print(f"Average temperature on {specific_date}: {avg_temp:.2f} C")
+
 temps= np.array([r.temperature for r in data])
 print(f"avg {temps.mean():.2f} C, max {temps.max():.2f} C, min {temps.min():.2f} C")
